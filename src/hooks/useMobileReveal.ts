@@ -2,6 +2,10 @@ import { useEffect } from 'react'
 import { MOBILE_QUERY, prefersReducedMotion } from './mobile'
 
 const ON = 'reveal-on'
+/** Fração do elemento visível para disparar a entrada. */
+const REVEAL_THRESHOLD = 0.12
+/** Margem do viewport: a entrada espera o elemento subir um pouco da borda de baixo. */
+const REVEAL_ROOT_MARGIN = '0px 0px -6% 0px'
 
 /**
  * Só no mobile: elementos com `data-reveal` entram suavemente quando chegam na tela.
@@ -22,7 +26,7 @@ export function useMobileReveal() {
           io.unobserve(entry.target)
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+      { threshold: REVEAL_THRESHOLD, rootMargin: REVEAL_ROOT_MARGIN },
     )
 
     const scan = () => {
