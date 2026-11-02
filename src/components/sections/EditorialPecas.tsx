@@ -1,6 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
+import { useCallback, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import { ED_GRUPOS, ED_MANIFESTO, ED_PECAS_COPY, ED_PIECES, type EdPieceId } from '../../data/editorial'
-import { ED_AUTOPLAY_MS, ED_DRAG_PX, edSlidePose, useEditorialPecas } from '../../hooks/useEditorialPecas'
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock'
+import { useCarouselAutoplay } from '../../hooks/useCarouselAutoplay'
+import { useEditorialPecas } from '../../hooks/useEditorialPecas'
+import { ED_DRAG_PX, edSlidePose } from '../../lib/carousel'
+import { pad } from '../../lib/format'
 import { EditorialLightbox } from './EditorialLightbox'
 import { Cloud, Sticker, type StickerKind } from './EditorialStickers'
 
@@ -24,8 +28,6 @@ const DECOR: readonly Decor[] = [
   { kind: 'bead', className: 'bob', tint: '#3DE877', style: { left: '47%', top: '15%', width: 'clamp(26px, 3vw, 48px)', '--sy': -240 } },
   { kind: 'bead', className: 'bob b3', tint: '#FF5BC0', style: { right: '19%', bottom: '17%', width: 'clamp(24px, 2.6vw, 42px)', '--sy': -280 } },
 ]
-
-const pad = (value: number) => (value < 10 ? `0${value}` : String(value))
 
 export function EditorialPecas() {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -53,23 +55,8 @@ export function EditorialPecas() {
     [slides.length],
   )
 
-  useEffect(() => {
-    if (!playing) return
-    const timer = window.setInterval(() => {
-      if (dragging.current) return
-      setIndex((value) => (value + 1) % slides.length)
-    }, ED_AUTOPLAY_MS)
-    return () => window.clearInterval(timer)
-  }, [playing, slides.length])
-
-  useEffect(() => {
-    if (lightbox < 0) return
-    const previous = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = previous
-    }
-  }, [lightbox])
+  useCarouselAutoplay(playing, slides.length, dragging, setIndex)
+  useBodyScrollLock(lightbox >= 0)
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     dragOrigin.current = event.clientX

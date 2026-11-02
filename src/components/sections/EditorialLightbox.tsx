@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { ED_PECAS_COPY, type EdSlide } from '../../data/editorial'
+import { pad } from '../../lib/format'
 
 type EditorialLightboxProps = {
   slides: readonly EdSlide[]
@@ -8,8 +9,6 @@ type EditorialLightboxProps = {
   onClose: () => void
   onStep: (delta: number) => void
 }
-
-const pad = (value: number) => (value < 10 ? `0${value}` : String(value))
 
 export function EditorialLightbox({ slides, index, pieceName, onClose, onStep }: EditorialLightboxProps) {
   const closeRef = useRef<HTMLButtonElement>(null)
