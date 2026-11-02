@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+
+:root {
+  --nb-ink: #07060a;
+  --nb-paper: #f4f2f8;
+  --nb-violet: #8c52ff;
+  --nb-green: #3de877;
+  --nb-blue: #14b1ff;
+  --nb-amber: #f9a01b;
+  --nb-magenta: #ff2fd0;
+  --nb-red: #ff3b2f;
+  --nb-deep: #0b0912;
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--nb-ink);
+  color: var(--nb-paper);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--nb-paper);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--nb-amber);
+}
+
+::selection {
+  background: var(--nb-violet);
+  color: var(--nb-paper);
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.portfolio-root {
+  min-height: 100vh;
+}
+
+.ceu-page {
+  -webkit-touch-callout: none;
+}
+
+.ceu-page a:hover,
+.colagem-page a.pill:hover {
+  color: inherit;
+}
+
+.colagem-page a:hover {
+  color: #3de877;
+}
+
+.colagem-arrow:hover {
+  transform: scale(1.08) rotate(-8deg);
+}
+
+.colagem-arrow--next:hover {
+  transform: scale(1.08) rotate(8deg);
+}
+
+.colagem-pane {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition: flex-grow 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.colagem-pane:hover,
+.colagem-pane:focus-visible {
+  flex-grow: 5;
+}
+
+.colagem-page [data-hera-ring],
+.colagem-page [data-hera-poster] {
+  transform: translate(-50%, -50%);
+}
+
+.colagem-page [data-hera-sticker],
+.colagem-page [data-hera-caption] {
+  opacity: 0;
+}
+
+.colagem-page [data-parada-frame] {
+  transform: rotate(-9deg) scale(0.5);
+  clip-path: polygon(6% 3%, 100% 0, 96% 100%, 0 95%);
+}
+
+.colagem-page [data-parada-sun] {
+  transform: scale(0.2);
+}
+
+.colagem-page [data-parada-l] {
+  opacity: 0;
+  transform: translateY(-50%) translateX(-40px);
+}
+
+.colagem-page [data-parada-r] {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 3D · Céu Líquido: os estilos vivem em components/sections/ceu.css */
+
+/* Mesa de Trabalhos (home) */
+.mesa-print:focus-visible {
+  outline: 2px solid #3de877;
+  outline-offset: 10px;
+}
+
+.mesa-btn {
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 242, 248, 0.5);
+  background: transparent;
+  color: #f4f2f8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background 0.25s,
+    color 0.25s,
+    transform 0.25s;
+}
+
+.mesa-btn:hover {
+  background: #f4f2f8;
+  color: #07060a;
+  transform: rotate(-3deg) scale(1.04);
+}
