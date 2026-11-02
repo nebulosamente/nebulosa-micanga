@@ -116,36 +116,6 @@
     0 0 0 calc(var(--S) * 0.24) #a7dbff,
     0 0 0 calc(var(--S) * 0.3) #b8f0c8;
 }
-.ed-dia .flo-title {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: max(128px, 15vh);
-  display: flex;
-  justify-content: center;
-  gap: calc(27 * var(--u));
-  z-index: 2;
-  pointer-events: none;
-  color: #fff;
-  letter-spacing: 0.015em;
-  font-weight: 700;
-  font-variation-settings: 'wdth' 100, 'opsz' 96;
-  font-size: clamp(70px, 16vw, 290px);
-  margin: 0;
-  white-space: nowrap;
-  text-shadow:
-    0 0.035em 0 rgba(140, 82, 255, 0.5),
-    0 0.09em 0.12em rgba(80, 40, 160, 0.22);
-}
-.ed-dia .flo-title em {
-  font-family: 'Instrument Serif', serif;
-  font-weight: 400;
-  letter-spacing: -0.03em;
-  color: #ff3d8b;
-  text-shadow:
-    0 0.035em 0 #fff,
-    0 0.09em 0.12em rgba(80, 40, 160, 0.22);
-}
 .ed-dia .flo-layer {
   position: absolute;
   inset: 0;
@@ -1042,11 +1012,6 @@
   .ed .nav-back {
     padding: 9px 12px;
     font-size: 14px;
-  }
-  .ed-dia .flo-title {
-    font-size: clamp(60px, 19vw, 120px);
-    gap: calc(15 * var(--u));
-    top: max(150px, 19vh);
   }
   .ed-dia .flo-cap {
     font-size: 20px;

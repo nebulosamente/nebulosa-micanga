@@ -3,23 +3,6 @@ export const EDITORIAL_MESA_ROUTE = '/banquete'
 
 export const ED_MEDIA = '/media/editorial'
 
-export const ED_COVER = {
-  banquete: `${ED_MEDIA}/web/banq-5.jpg`,
-  ceu: `${ED_MEDIA}/ceu-chapeu-close.jpeg`,
-} as const
-
-export const ED_STILLS_BANQUETE = [
-  `${ED_MEDIA}/web/banq-5.jpg`,
-  `${ED_MEDIA}/web/banq-2.jpg`,
-  `${ED_MEDIA}/web/banq-mural.jpg`,
-] as const
-
-export const ED_STILLS_CEU = [
-  `${ED_MEDIA}/ceu-chapeu-close.jpeg`,
-  `${ED_MEDIA}/recorte/ceu-chapeu-sorriso.png`,
-  `${ED_MEDIA}/recorte/ceu-pulso.png`,
-] as const
-
 /** Fotos do macarrão de miçanga (webp, 3:4 salvo indicação). */
 export const ED_MACARRAO = `${ED_MEDIA}/macarrao`
 /** Fotos de produto da coleção Nebulosa: calça, chapéu e pulseira. */

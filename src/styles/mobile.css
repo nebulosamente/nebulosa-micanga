@@ -1,0 +1,120 @@
+/*
+ * Ajustes exclusivos de MOBILE (telas até 760px e dispositivos sem hover).
+ * Nada aqui vale para desktop: tudo está dentro de @media. Os estilos de layout da maioria dos componentes
+ * são inline, então as regras abaixo usam !important quando precisam sobrescrevê-los.
+ */
+
+@keyframes m-page-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes m-reveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+  }
+}
+
+@media (max-width: 760px) {
+  /* ---------- Base de toque ---------- */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  a,
+  button,
+  [role='button'] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Entrada suave da página (só opacidade: não cria bloco de contenção para elementos fixos). */
+  .ed {
+    animation: m-page-in 0.7s ease backwards;
+  }
+
+  /* Revelação ao rolar: a classe `reveal-on` só existe com JS ativo e sem "reduzir movimento". */
+  .reveal-on [data-reveal]:not(.is-in) {
+    opacity: 0;
+  }
+
+  .reveal-on [data-reveal].is-in {
+    animation: m-reveal 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) var(--rd, 0ms) backwards;
+  }
+}
+
+/* ---------- Editorial (mobile) ---------- */
+@media (max-width: 760px) {
+  .ed .nav {
+    top: max(10px, env(safe-area-inset-top));
+    left: 10px;
+    right: 10px;
+    transition:
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 0.3s ease;
+    will-change: transform;
+  }
+
+  .ed .nav[data-hidden='true'] {
+    transform: translateY(calc(-100% - 24px));
+    opacity: 0;
+  }
+
+  .ed .nav[data-hidden='true'] * {
+    pointer-events: none !important;
+  }
+
+  .ed .nav .nav-back {
+    min-height: 44px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .ed .nav .nav-back:active {
+    transform: scale(0.95);
+  }
+
+  /* Palcos fixos acompanham a altura visível (a barra do navegador não esconde mais a legenda). */
+  .ed.ed-dia .flo-stage,
+  .ed.ed-dia .tb-stage,
+  .ed .ed-mesa .fh-stage,
+  .ed .ed-mesa .fin-stage {
+    height: 100svh;
+    height: 100dvh;
+  }
+
+  /* Legenda do pin: título em cima, contagem embaixo (em coluna estreita o título quebrava em 4 linhas). */
+  .ed .ed-mesa .pin-cap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 8px 4px 0;
+  }
+
+  .ed .ed-mesa .pin-cap b {
+    font-size: 15px;
+    line-height: 1.15;
+  }
+
+  .ed .ed-mesa .pin-cap span {
+    font-size: 10px;
+    white-space: normal;
+  }
+
+  /* Paleta: nomes como "Verde-pistache" estouravam a coluna de 45px do cartão. */
+  .ed .ed-mesa .sw {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 6px;
+  }
+
+  .ed .ed-mesa .sw div {
+    font-size: 8.5px;
+    letter-spacing: 0.02em;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Telas muito estreitas (iPhone SE e similares). */

@@ -24,6 +24,23 @@ npm run lint
 
 As portas são diferentes em cada um dos três repositórios para dar para rodar todos ao mesmo tempo.
 
+## Estrutura do código
+
+```
+src/
+  main.tsx, App.tsx     entrada e página única
+  components/
+    layout/             EditorialNav (barra fixa)
+    sections/           Editorial (página) e as seções: Feed, Peças, Lightbox, Stickers
+  data/editorial.ts     textos, peças e caminhos das imagens
+  hooks/                useEditorialDia / Mesa / Pecas (cenas por rolagem), useCarouselAutoplay,
+                        useBodyScrollLock, useHideOnScroll, useMobileReveal, mobile
+  lib/                  carousel (pose e constantes do giro), format, links (URLs entre os sites),
+                        editorial-flora.js e editorial-beads.js (plantas e miçangas em SVG)
+  styles/               index.css, mobile.css, editorial.css, editorialPecas.css
+public/media/editorial/ imagens usadas: nebulosa/, macarrao/ e 3 recortes
+```
+
 ## Links entre os sites
 
 Os links para a home e para os outros dois sites são URLs completas, definidas em `src/lib/links.ts`.
