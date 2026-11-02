@@ -7,8 +7,8 @@ import { EditorialNav } from '../layout/EditorialNav'
 import { EditorialFeed } from './EditorialFeed'
 import { EditorialPecas } from './EditorialPecas'
 import { Cloud } from './EditorialStickers'
-import './editorial.css'
-import './editorialPecas.css'
+import '../../styles/editorial.css'
+import '../../styles/editorialPecas.css'
 
 type EditorialSection = 'dia' | 'mesa'
 
