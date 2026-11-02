@@ -1,6 +1,6 @@
 import type { CSSProperties, MouseEvent, RefObject } from 'react'
 import { ED_MACARRAO } from '../../data/editorial'
-import { isPlainLeftClick } from '../../lib/links'
+import { isPlainLeftClick } from '../../lib/click'
 
 type EditorialFeedProps = {
   wrapRef: RefObject<HTMLDivElement | null>
