@@ -2,8 +2,6 @@ import { useCallback, useEffect, useRef } from 'react'
 import { ED_MEDIA, ED_NEBULOSA } from '../../data/editorial'
 import { useEditorialDia } from '../../hooks/useEditorialDia'
 import { useEditorialMesa } from '../../hooks/useEditorialMesa'
-import { isPlainLeftClick, siteUrl, type Navigate } from '../../lib/links'
-import { EditorialNav } from '../layout/EditorialNav'
 import { EditorialFeed } from './EditorialFeed'
 import { EditorialPecas } from './EditorialPecas'
 import { Cloud } from './EditorialStickers'
@@ -13,12 +11,11 @@ import '../../styles/editorialPecas.css'
 type EditorialSection = 'dia' | 'mesa'
 
 type EditorialProps = {
-  onNavigate: Navigate
   /** Seção em que a página deve abrir (ex.: link antigo para o feed). */
   startAt?: EditorialSection
 }
 
-export function Editorial({ onNavigate, startAt = 'dia' }: EditorialProps) {
+export function Editorial({ startAt = 'dia' }: EditorialProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const mesaRef = useRef<HTMLDivElement>(null)
   useEditorialDia(rootRef)
@@ -45,7 +42,6 @@ export function Editorial({ onNavigate, startAt = 'dia' }: EditorialProps) {
 
   return (
     <div ref={rootRef} id="ed-dia" className="ed ed-dia">
-      <EditorialNav onHome={() => onNavigate('home')} />
       <main>
         <section className="flo" data-flo data-screen-label="D · Florada" aria-label="D · Florada">
           <div className="flo-stage" data-flo-stage>
@@ -189,16 +185,6 @@ export function Editorial({ onNavigate, startAt = 'dia' }: EditorialProps) {
 
         <div className="tb-ft mono">
           <span>Projeto 03 / Editorial</span>
-          <a
-            href={siteUrl('home')}
-            onClick={(event) => {
-              if (!isPlainLeftClick(event)) return
-              event.preventDefault()
-              onNavigate('home')
-            }}
-          >
-            Voltar ao portfólio →
-          </a>
         </div>
       </main>
     </div>

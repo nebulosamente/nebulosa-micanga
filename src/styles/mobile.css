@@ -48,35 +48,6 @@
 
 /* ---------- Editorial (mobile) ---------- */
 @media (max-width: 760px) {
-  .ed .nav {
-    top: max(10px, env(safe-area-inset-top));
-    left: 10px;
-    right: 10px;
-    transition:
-      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
-      opacity 0.3s ease;
-    will-change: transform;
-  }
-
-  .ed .nav[data-hidden='true'] {
-    transform: translateY(calc(-100% - 24px));
-    opacity: 0;
-  }
-
-  .ed .nav[data-hidden='true'] * {
-    pointer-events: none !important;
-  }
-
-  .ed .nav .nav-back {
-    min-height: 44px;
-    padding: 0 16px;
-    font-size: 14px;
-  }
-
-  .ed .nav .nav-back:active {
-    transform: scale(0.95);
-  }
-
   /* Palcos fixos acompanham a altura visível (a barra do navegador não esconde mais a legenda). */
   .ed.ed-dia .flo-stage,
   .ed.ed-dia .tb-stage,
